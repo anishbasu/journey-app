@@ -1,0 +1,61 @@
+<!doctype>
+<html lang="en" ng-app="journey">
+	<head>
+		<title>Journey</title>
+		<meta charset="UTF-8">
+		<!-- Bootstrap CSS-->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!-- Theme CSS -->
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<!-- Font CSS -->
+		<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+		<link href='http://fonts.googleapis.com/css?family=Oxygen:400,700,300' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<div class="container" ng-controller="mainCtrl">
+			<!-- Enter Post -->
+			<div class="row">
+				<div class="col-xs-2"></div>
+				<!-- Important Stuff -->
+				<div class="col-xs-8 box">
+						<div class="row ">
+							<div class="col-xs-12 title-enter"  contenteditable="true" ng-model="post_title" strip-br="true" select-non-editable="true"></div>
+						</div>
+						<div class="row line"></div>
+						<div class="row">
+							<div class="col-xs-12 post-text"  contenteditable="true" ng-model="txt" strip-br="true" select-non-editable="true"></div>
+						</div>
+						<div class="row options-bar">
+						<button id="submit-post" class="pull-right col-sm-2 btn post-btn btn-primary" ng-click="submitPost()">Post</button>
+						</div>
+				</div>
+				<!-- End -->
+				<div class="col-xs-2"></div>
+			</div>
+			<!-- End Enter Post -->
+
+
+			<!-- Sample Post Box -->
+			<div class="row" ng-repeat="post in $storage.posts.slice().reverse()">
+				<div class="col-xs-2"></div>
+				<div class="col-xs-8 box">
+					<button class="pull-right close-btn btn" ng-click="deletePost(post.id)"><span class="glyphicon glyphicon-remove"></span></button>
+					<div class="row post-content">
+						<div class="post-title">{{post.title}}</div>
+						<p ng-bind-html="post.txt"></p>
+						<p class="post-date" ng-bind="post.date"></p>
+					</div>
+				</div>
+				<div class="col-xs-2"></div>
+			</div>
+			<!-- End -->
+		</div>
+
+		<!-- Javascripts -->
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript" src="js/lib.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular-sanitize.js"></script>
+		<script type="text/javascript" src="js/ngStorage.min.js"></script>
+	</body>
+</html>
